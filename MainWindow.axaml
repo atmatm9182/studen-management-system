@@ -6,17 +6,58 @@
         Height="600">
     <Window.Styles>
         <Style Selector="TextBox">
+            <Setter Property="Margin" Value="10 5 10 5"> </Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"> </Setter>
+            <Setter Property="VerticalAlignment" Value="Center"> </Setter>
             <Setter Property="Width" Value="300"></Setter>
         </Style>
         <Style Selector="Button">
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center"> </Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        </Style>
+        <Style Selector="StackPanel.Form">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"> </Setter>
+        </Style>
+        <Style Selector="TextBlock.ErrorLabel">
+            <Setter Property="Foreground" Value="Red"> </Setter>
+            <Setter Property="FontSize" Value="16"> </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"> </Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         </Style>
     </Window.Styles>
     
-    <StackPanel Orientation="Vertical">
-        <Button Content="Add" Command="{Binding AddStudentButtonClicked}" />
-        <TextBox Name="FirstNameInput" Watermark="Student's first name" Text="{Binding FirstNameInputText}"/>
-        <TextBox Name="LastNameInput" Watermark="Student's last name" Text="{Binding LastNameInputText}"/>
-        <TextBox Name="AlbumNumber" Watermark="Student's album number" Text="{Binding AlbumNumber}"/>
-    </StackPanel>
+    <Grid RowDefinitions="Auto" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="400"></RowDefinition> 
+            <RowDefinition Height="*"></RowDefinition> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel 
+            Classes="Form"
+            Orientation="Vertical"
+            Grid.Row="0" 
+            Grid.Column="0"
+            Grid.RowSpan="2"
+            >
+            <Border 
+                BorderBrush="Black"
+                BorderThickness="2"
+                Padding="2"
+                CornerRadius="15"
+                >
+                <StackPanel Orientation="Vertical" >
+                    <TextBox Name="FirstNameInput" Watermark="Student's first name" Text="{Binding FirstNameInputText}"/>
+                    <TextBox Name="LastNameInput" Watermark="Student's last name" Text="{Binding LastNameInputText}"/>
+                    <TextBox Name="AlbumNumber" Watermark="Student's album number" Text="{Binding AlbumNumber}"/>
+                    <Button Content="Add" Command="{Binding AddStudentButtonClicked}" />
+                </StackPanel>
+            </Border>
+            <TextBlock Classes="ErrorLabel" Text="{Binding ErrorLabelText}" Grid.Row="0" Grid.Column="0"></TextBlock>
+        </StackPanel>
+    </Grid>
 </Window>
