@@ -15,5 +15,8 @@
     
     <StackPanel Orientation="Vertical">
         <Button Content="Add" Command="{Binding AddStudentButtonClicked}" />
+        <TextBox Name="FirstNameInput" Watermark="Student's first name" Text="{Binding FirstNameInputText}"/>
+        <TextBox Name="LastNameInput" Watermark="Student's last name" Text="{Binding LastNameInputText}"/>
+        <TextBox Name="AlbumNumber" Watermark="Student's album number" Text="{Binding AlbumNumber}"/>
     </StackPanel>
 </Window>
